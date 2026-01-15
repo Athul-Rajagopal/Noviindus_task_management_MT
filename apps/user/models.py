@@ -34,6 +34,19 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.username} ({self.role})"
+    
+    def save(self, *args, **kwargs):
+        if self.role == 'SUPERADMIN':
+            self.is_superuser = True
+            self.is_staff = True
+        elif self.role == 'ADMIN':
+            self.is_staff = True
+            self.is_superuser = False
+        else:
+            self.is_staff = False
+            self.is_superuser = False
+
+        super().save(*args, **kwargs)
 
 
 # tasks model
