@@ -1,0 +1,21 @@
+{% extends "adminpanel/base.html" %}
+{% block title %}Create Task{% endblock %}
+
+{% block content %}
+<h3>Create Task</h3>
+
+<form method="post">
+    {% csrf_token %}
+    <input name="title" class="form-control mb-2" placeholder="Title">
+    <textarea name="description" class="form-control mb-2" placeholder="Description"></textarea>
+    <input type="date" name="due_date" class="form-control mb-2">
+
+    <select name="assigned_to" class="form-control mb-2">
+        {% for user in users %}
+        <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+    </select>
+
+    <button class="btn btn-success">Create</button>
+</form>
+{% endblock %}

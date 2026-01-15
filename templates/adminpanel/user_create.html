@@ -1,0 +1,21 @@
+{% extends "adminpanel/base.html" %}
+{% block title %}Create User{% endblock %}
+
+{% block content %}
+<h3>Create User / Admin</h3>
+
+<form method="post">
+    {% csrf_token %}
+    <input name="username" class="form-control mb-2" placeholder="Username" required>
+    <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
+
+    <select name="role" class="form-control mb-2">
+        <option value="USER">User</option>
+        <option value="ADMIN">Admin</option>
+        <option value="SUPERADMIN">SuperAdmin</option>
+    </select>
+
+    <button class="btn btn-success">Create</button>
+</form>
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% extends "adminpanel/base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <h3 class="mb-3">Admin Panel Login</h3>
+
+        <form method="post">
+            {% csrf_token %}
+            <input name="username" class="form-control mb-2" placeholder="Username" required>
+            <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
+            <button class="btn btn-dark w-100">Login</button>
+        </form>
+
+        {% if error %}
+            <p class="text-danger mt-2">{{ error }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

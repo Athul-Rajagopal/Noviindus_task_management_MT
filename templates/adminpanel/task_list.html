@@ -1,0 +1,30 @@
+{% extends "adminpanel/base.html" %}
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+<h3>Tasks</h3>
+
+<a href="{% url 'panel_task_create' %}" class="btn btn-success mb-3">Create Task</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Assigned To</th>
+        <th>Action</th>
+    </tr>
+
+    {% for task in tasks %}
+    <tr>
+        <td>{{ task.title }}</td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.assigned_to.username }}</td>
+        <td>
+            {% if task.status == 'COMPLETED' %}
+            <a href="{% url 'panel_task_report' task.id %}" class="btn btn-sm btn-info">View Report</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
