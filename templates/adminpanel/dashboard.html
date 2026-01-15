@@ -1,0 +1,30 @@
+{% extends "adminpanel/base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h3>Dashboard</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h5>Total Users</h5>
+            <h2>{{ user_count }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h5>Total Tasks</h5>
+            <h2>{{ task_count }}</h2>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<a href="{% url 'panel_task_list' %}" class="btn btn-primary">Manage Tasks</a>
+
+{% if request.user.is_superuser %}
+<a href="{% url 'user_list' %}" class="btn btn-secondary">Manage Users</a>
+{% endif %}
+{% endblock %}
