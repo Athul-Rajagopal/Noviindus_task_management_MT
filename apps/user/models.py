@@ -35,3 +35,24 @@ class User(AbstractUser):
     def __str__(self):
         return f"{self.username} ({self.role})"
 
+
+# tasks model
+class Task(models.Model):
+    STATUS_CHOICES = (
+    ('PENDING', 'Pending'),
+    ('IN_PROGRESS', 'In Progress'),
+    ('COMPLETED', 'Completed'),
+    )
+
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    assigned_to = models.ForeignKey(User, on_delete=models.CASCADE)
+    due_date = models.DateField()
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    completion_report = models.TextField(null=True, blank=True)
+    worked_hours = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    completed_at = models.DateTimeField(null=True, blank=True)
+
+
+    def __str__(self):
+        return self.title
