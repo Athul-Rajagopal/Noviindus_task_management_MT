@@ -1,4 +1,3 @@
-```md
 # 🗂 Task Management System (Django + DRF + JWT)
 
 A **role-based Task Management System** built using **Django, Django REST Framework, JWT Authentication, and custom HTML Admin Panel**.
@@ -20,12 +19,14 @@ with **strict access control**, **JWT-secured APIs**, and a **custom-built admin
   - Admin/SuperAdmin web panel
 
 ### 🧑‍💼 Roles & Permissions
+``` bash
 | Role | Capabilities |
 |----|----|
 | SuperAdmin | Full control over users, admins, tasks, reports |
 | Admin | Manages only assigned users & their tasks |
 | User | Can view & update own tasks via API |
 
+```
 ---
 
 ## 🛠 Tech Stack
@@ -39,7 +40,7 @@ with **strict access control**, **JWT-secured APIs**, and a **custom-built admin
 
 ## 📁 Project Structure
 
-```
+``` bash
 
 task_manager/
 │
@@ -67,7 +68,7 @@ task_manager/
 ├── manage.py
 └── requirements.txt
 
-````
+```
 
 ---
 
